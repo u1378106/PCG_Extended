@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73219427a2b599e43805877708f2052a, type: 3}
+  m_Name: ElectricPower
+  m_EditorClassIdentifier: 
+  Damage: 20
+  message: Electric Power!
+  weapon: {fileID: 5439762156009371580, guid: 776c693146e3ad745aafca1fb9f948d3, type: 3}
+  cooldownTime: 5
+  weaponTrailEffect: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
+  stunDuration: 4
+  freezeDuartion: 0
