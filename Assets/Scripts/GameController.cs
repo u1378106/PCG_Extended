@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -27,18 +28,29 @@ public class GameController : MonoBehaviour
 
         foreach(GameObject enemy in enemies)
         {
-            tempIndex = currentRoomIndex;
             currentRoomIndex = Random.Range(1, _dungeonGenerator.transform.childCount - 2);
             
             enemy.transform.position = _dungeonGenerator.transform.GetChild(currentRoomIndex).GetChild(5).transform.position;
         }
+
+        foreach (GameObject powerUp in powerups)
+        {
+            currentRoomIndex = Random.Range(1, _dungeonGenerator.transform.childCount - 2);
+
+            powerUp.transform.position = _dungeonGenerator.transform.GetChild(currentRoomIndex).GetChild(5).transform.position;
+        }
     }
 
-  
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 
     public int NewNumber(int r)
     {
-
         int a = 0;
 
         while (a == 0)
@@ -54,11 +66,5 @@ public class GameController : MonoBehaviour
             }
         }
         return a;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

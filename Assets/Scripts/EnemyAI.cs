@@ -56,7 +56,7 @@ public class EnemyAI : MonoBehaviour
         _currentHealth = startingHealth;
         ConstructBehahaviourTree();
 
-        offset = new Vector3(0, 2, 0);
+        offset = new Vector3(0, 3.5f, 0);
     }
 
     private void ConstructBehahaviourTree()

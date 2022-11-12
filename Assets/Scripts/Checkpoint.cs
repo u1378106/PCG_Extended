@@ -18,7 +18,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag.Equals("MainCamera"))
+        if(other.gameObject.tag.Equals("Player"))
         {
             this.gameObject.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(RoomGeneration());          

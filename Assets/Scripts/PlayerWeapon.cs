@@ -28,12 +28,12 @@ public class PlayerWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
 
     public void CheckForWeapon(int i, string weaponName)
     {
-        //audioManager.collect.Play();
+        audioManager.collect.Play();
 
         weaponIcons[i - 1].sprite = Resources.Load<Sprite>("Icons/" + weaponName);
         tempColor = weaponIcons[i - 1].color;
@@ -45,7 +45,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            //audioManager.weaponChange.Play();
+            audioManager.weaponChange.Play();
             currentPower = weaponSet[0];
 
             tempColor.a = 1f;
@@ -58,7 +58,7 @@ public class PlayerWeapon : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            //audioManager.weaponChange.Play();
+            audioManager.weaponChange.Play();
             currentPower = weaponSet[1];
 
             tempColor.a = 1f;
@@ -71,7 +71,7 @@ public class PlayerWeapon : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            //audioManager.weaponChange.Play();
+            audioManager.weaponChange.Play();
             currentPower = weaponSet[2];
 
             tempColor.a = 1f;

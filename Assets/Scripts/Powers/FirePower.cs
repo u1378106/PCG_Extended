@@ -8,6 +8,6 @@ public class FirePower : Weapon
 
     public override void Activate()
     {
-        Attack(weaponTrailEffect, GameObject.FindGameObjectWithTag("Player"));
+        Attack(weaponTrailEffect, GameObject.FindGameObjectWithTag("ShootPos"));
     }
 }

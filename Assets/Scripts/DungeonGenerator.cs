@@ -15,7 +15,7 @@ public class DungeonGenerator : MonoBehaviour
     public bool isMazeDone;
     List<RoomData> dungoens = new List<RoomData>();
     private GameObject dungeonName;
-    public GameObject dungeonNamePrefab;
+    public GameObject dungeonNamePrefab, player, gameStatusScreen;
 
     public class Cell
     {
@@ -51,6 +51,12 @@ public class DungeonGenerator : MonoBehaviour
         RandomDungeon();
     }
 
+    private void Start()
+    {
+        dungoenCounter = 0;
+        gameStatusScreen.SetActive(false);
+    }
+
     public void RandomDungeon()
     {
 
@@ -60,24 +66,34 @@ public class DungeonGenerator : MonoBehaviour
 
     public void StartMazeGeneration()
     {
-        if (transform.childCount != 0)
+        if (dungoenCounter <= 4)
         {
-            foreach (Transform cell in transform)
-            {
-                Destroy(cell.gameObject);
-            }
-        }
-        MazeGenerator();
 
-        startPoint = transform.GetChild(0).GetChild(5).transform.position;
-        Camera.main.transform.position = startPoint;
-        roomCount = transform.childCount;
-        endPoint = transform.GetChild(roomCount - 1).GetChild(5).transform.position;
-        dungoenCounter++;
-        Destroy(dungeonName);
-        dungeonName = GameObject.Instantiate(dungeonNamePrefab, startPoint, Quaternion.identity);
-        dungeonName.transform.GetChild(0).transform.position = startPoint;
-        dungeonName.GetComponentInChildren<TextMeshProUGUI>().text = "Dungeon " + dungoenCounter;
+            if (transform.childCount != 0)
+            {
+                foreach (Transform cell in transform)
+                {
+                    Destroy(cell.gameObject);
+                }
+            }
+            MazeGenerator();
+
+            startPoint = transform.GetChild(0).GetChild(5).transform.position;
+            Camera.main.transform.position = startPoint;
+            player.transform.position = startPoint;
+            roomCount = transform.childCount;
+            endPoint = transform.GetChild(roomCount - 1).GetChild(5).transform.position;
+            dungoenCounter++;
+            Destroy(dungeonName);
+            dungeonName = GameObject.Instantiate(dungeonNamePrefab, startPoint, Quaternion.identity);
+            dungeonName.transform.GetChild(0).transform.position = startPoint;
+            dungeonName.GetComponentInChildren<TextMeshProUGUI>().text = "Dungeon " + dungoenCounter;
+        }
+        else
+        {
+            gameStatusScreen.SetActive(true);
+            gameStatusScreen.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "You Win!";
+        }
     }
 
     void GenerateDungeon()
@@ -106,11 +122,11 @@ public class DungeonGenerator : MonoBehaviour
                     }
 
                     if (dungeonToLoad.name == "NewRoom1")                  
-                        offset = new Vector2(8, 8);
+                        offset = new Vector2(32, 32);
                     else if (dungeonToLoad.name == "NewRoom2")
-                        offset = new Vector2(4, 4);
+                        offset = new Vector2(24, 24);
                     else
-                        offset = new Vector2(5.5f, 5.5f);
+                        offset = new Vector2(35f, 35f);
                     var newRoom = Instantiate(dungeonToLoad.room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                     newRoom.UpdateRoom(currentCell.status);
                     newRoom.name += " " + i + "-" + j;

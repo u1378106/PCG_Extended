@@ -9,6 +9,6 @@ public class ElectricPower : Weapon
 
     public override void Activate()
     {
-        Stun(weaponTrailEffect, GameObject.FindGameObjectWithTag("Player"));
+        Stun(weaponTrailEffect, GameObject.FindGameObjectWithTag("ShootPos"));
     }
 }

@@ -66,10 +66,10 @@ public class Target : MonoBehaviour
     IEnumerator Stunned(int time)
     {
         this.GetComponent<EnemyFollow>().enabled = false;
-        this.GetComponent<NavMeshAgent>().enabled = false;
+        //this.GetComponent<NavMeshAgent>().enabled = false;
         yield return new WaitForSeconds(time);
         this.GetComponent<EnemyFollow>().enabled = true;
-        this.GetComponent<NavMeshAgent>().enabled = true;
+        //this.GetComponent<NavMeshAgent>().enabled = true;
     }
 
     internal void Freeze(int seconds)
@@ -81,9 +81,9 @@ public class Target : MonoBehaviour
     IEnumerator Frozen(int time)
     {
         this.GetComponent<EnemyFollow>().enabled = false;
-        this.GetComponent<NavMeshAgent>().enabled = false;
+        //this.GetComponent<NavMeshAgent>().enabled = false;
         yield return new WaitForSeconds(time);
         this.GetComponent<EnemyFollow>().enabled = true;
-        this.GetComponent<NavMeshAgent>().enabled = true;
+        //this.GetComponent<NavMeshAgent>().enabled = true;
     }
 }

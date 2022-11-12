@@ -7,6 +7,8 @@ public abstract class Weapon : MonoBehaviour
     public int Damage;
     public int cooldownTime;
 
+    private Vector3 offset = new Vector3(5, 0, 0);
+
     public abstract void Activate();
 
     /* All of the functions defined below may look and function same but the intend of creating these
@@ -19,7 +21,7 @@ public abstract class Weapon : MonoBehaviour
 
         GameObject projectile = Instantiate(this.gameObject, player.transform.position, Quaternion.identity);
         GameObject trail = Instantiate(weaponTrailEffect, projectile.transform);
-        projectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * 1000);
+        projectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * 3000);
     }
 
     protected void MegaAttack(GameObject weaponTrailEffect, GameObject player)
@@ -28,7 +30,7 @@ public abstract class Weapon : MonoBehaviour
 
         GameObject projectile = Instantiate(this.gameObject, player.transform.position, Quaternion.identity);
         GameObject trail = Instantiate(weaponTrailEffect, projectile.transform);
-        projectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * 1000);
+        projectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * 3000);
     }
 
     protected void Stun(GameObject weaponTrailEffect, GameObject player)
@@ -37,7 +39,7 @@ public abstract class Weapon : MonoBehaviour
 
         GameObject projectile = Instantiate(this.gameObject, player.transform.position, Quaternion.identity);
         GameObject trail = Instantiate(weaponTrailEffect, projectile.transform);
-        projectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * 1000);
+        projectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * 3000);
     }
 
     protected void Freeze(GameObject weaponTrailEffect, GameObject player)
@@ -46,6 +48,6 @@ public abstract class Weapon : MonoBehaviour
 
         GameObject projectile = Instantiate(this.gameObject, player.transform.position, Quaternion.identity);
         GameObject trail = Instantiate(weaponTrailEffect, projectile.transform);
-        projectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * 1000);
+        projectile.GetComponent<Rigidbody>().AddForce(player.transform.forward * 3000);
     }
 }

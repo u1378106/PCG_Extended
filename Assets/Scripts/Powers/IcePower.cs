@@ -9,6 +9,6 @@ public class IcePower : Weapon
     private GameObject player;
     public override void Activate()
     {
-        Freeze(weaponTrailEffect, GameObject.FindGameObjectWithTag("Player"));
+        Freeze(weaponTrailEffect, GameObject.FindGameObjectWithTag("ShootPos"));
     }
 }
